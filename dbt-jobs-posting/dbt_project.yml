@@ -1,0 +1,10 @@
+name: dbt-jobs-posting
+
+profile: dbt_jobs_posting
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt-jobs-postings:
