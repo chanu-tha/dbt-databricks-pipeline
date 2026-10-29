@@ -1,0 +1,9 @@
+sources:
+  - name: jobs
+    database: workspace
+    schema: jobs
+    tables:
+      - name: raw_job_postings
+        description: Information of scrape event, one row per one scrape event.
+      - name: raw_job_skills
+        description: (job, skill) pair extracted from the postings.
