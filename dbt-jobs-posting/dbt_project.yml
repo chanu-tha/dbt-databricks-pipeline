@@ -7,7 +7,7 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  dbt-jobs-postings:
+  dbt-jobs-posting:
     +persist_docs:
       relation: true
       columns: true  

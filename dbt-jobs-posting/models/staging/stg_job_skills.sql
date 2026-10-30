@@ -1,6 +1,6 @@
 WITH source AS (
     SELECT *
-    FROM {{ ref('source', 'raw_job_skills') }}
+    FROM {{ source('jobs', 'raw_job_skills') }}
 ),
 cleaned_stg AS (
     SELECT

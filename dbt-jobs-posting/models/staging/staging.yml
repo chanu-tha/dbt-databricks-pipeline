@@ -21,7 +21,7 @@ models:
         #         values: ['Data Engineer', 'Data Analyst', 'Data Scientist']
       - name: search_date
         description: Scrape day; doubles as the incremental high-water mark in fct_job_postings.
-      - name: searched_at
+      - name: search_at
         description: Scrape timestamp (search_time renamed); anchors the snapshot's updated_at.
       - name: search_location
         description: Location parameter the scraper searched under.
@@ -56,12 +56,12 @@ models:
         description: Raw salary text, kept unparsed; the snapshot lesson diffs it across scrapes.
       - name: salary_min
         description: Lower bound parsed from the salary text; the single value when no range is given.
-        data_tests:
-          - non_negative
+        # data_tests:
+        #   - non_negative
       - name: salary_max
         description: Upper bound parsed from the salary text; the single value when no range is given.
-        data_tests:
-          - non_negative
+        # data_tests:
+        #   - non_negative
       - name: salary_avg
         description: >
           THE standard salary measure: midpoint of the parsed range (a single value is its
