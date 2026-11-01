@@ -5,7 +5,7 @@ models:
       re-scrapes update in place, new jobs insert.
     config:
       meta:
-        owner: luke
+        owner: chanu
         tier: gold
     columns:
       - name: job_id
@@ -18,6 +18,12 @@ models:
           under a different search carries its most recent term.
       - name: company_name
         description: Employer, trimmed upstream; natural key into dim_company.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_company')
+                field: company_name
       - name: job_location
         description: Location text as posted.
       - name: source_platform
@@ -89,7 +95,19 @@ models:
     columns:
       - name: job_id
         description: Job carrying the skill; every value exists in fct_job_postings.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fct_job_postings')
+                field: job_id 
       - name: skill_id
         description: Skill observed on the job; every value exists in dim_skill.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_skill')
+                field: skill_id 
       - name: skill_keyword
         description: Raw skill keyword, trimmed upstream.

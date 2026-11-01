@@ -10,6 +10,7 @@ WITH source as (
 SELECT *
 FROM {{ source('jobs', 'raw_job_postings') }}
 WHERE error IS NOT TRUE
+    AND job_id IS NOT NULL
 ),
 -- commonly use with tags are store in json string
 parsed_stg as (

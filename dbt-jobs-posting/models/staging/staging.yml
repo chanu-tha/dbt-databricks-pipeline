@@ -11,14 +11,14 @@ models:
         description: >
           The scraper's posting id. Not unique at this grain by design; uniqueness is
           promised, and tested, at fct_job_postings.
-        # data_tests:
-        #   - not_null
+        data_tests:
+          - not_null
       - name: search_term
         description: The role the scraper searched for; exactly three values by construction.
-        # data_tests:
-        #   - accepted_values:
-        #       arguments:
-        #         values: ['Data Engineer', 'Data Analyst', 'Data Scientist']
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Data Engineer', 'Data Analyst', 'Data Scientist']
       - name: search_date
         description: Scrape day; doubles as the incremental high-water mark in fct_job_postings.
       - name: search_at
@@ -39,12 +39,12 @@ models:
           the wild, including combos like 'Full-time and Part-time' (25,242 rows), so the naive
           four-value test below fails 28,776 rows by design: the 3.09.2 finding, kept visible at
           warn severity instead of silently "fixed".
-        # data_tests:
-        #   - accepted_values:
-        #       arguments:
-        #         values: ['Full-time', 'Part-time', 'Contractor', 'Internship']
-        #       config:
-        #         severity: warn
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Full-time', 'Part-time', 'Contractor', 'Internship']
+              config:
+                severity: warn
       - name: job_work_from_home
         description: True when the posting is flagged remote.
       - name: job_posted_at
@@ -56,12 +56,12 @@ models:
         description: Raw salary text, kept unparsed; the snapshot lesson diffs it across scrapes.
       - name: salary_min
         description: Lower bound parsed from the salary text; the single value when no range is given.
-        # data_tests:
-        #   - non_negative
+        data_tests:
+          - non_negative
       - name: salary_max
         description: Upper bound parsed from the salary text; the single value when no range is given.
-        # data_tests:
-        #   - non_negative
+        data_tests:
+          - non_negative
       - name: salary_avg
         description: >
           THE standard salary measure: midpoint of the parsed range (a single value is its
@@ -100,12 +100,12 @@ models:
           Every row's parent exists in stg_job_postings; the course export's join guarantees
           it, so the relationships test passes by construction. Same assertion the datanerd
           pipeline runs nightly in production, where integrity is a real risk.
-        # data_tests:
-        #   - not_null
-        #   - relationships:
-        #       arguments:
-        #         to: ref('stg_job_postings')
-        #         field: job_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_job_postings')
+                field: job_id
       - name: skill_id
         description: Skill key; categorized by the skill_categories seed via dim_skill.
         data_tests:
@@ -113,3 +113,18 @@ models:
       - name: skill_keyword
         description: Skill text as extracted, trimmed.
 
+unit_tests:
+  - name: test_parse_salary_shapes
+    description: "parse_salary handles a range, a single value, and no salary at all"
+    model: stg_job_postings
+    given:
+      - input: source('jobs', 'raw_job_postings')
+        rows:
+          - {job_id: 1, job_salary: "100K–186K a year"}
+          - {job_id: 2, job_salary: "32.50 an hour"}
+          - {job_id: 3, job_salary: null}
+    expect:
+      rows:
+        - {job_id: 1, salary_min: 100000, salary_max: 186000}
+        - {job_id: 2, salary_min: 32.5, salary_max: 32.5}
+        - {job_id: 3, salary_min: null, salary_max: null}
