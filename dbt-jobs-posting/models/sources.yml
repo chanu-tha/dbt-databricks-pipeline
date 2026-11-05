@@ -4,6 +4,8 @@ sources:
     schema: jobs
     tables:
       - name: raw_job_postings
+        identifier: "{{ 'raw_job_postings' if target.name == 'dev' else 'job_postings' }}"
         description: Information of scrape event, one row per one scrape event.
       - name: raw_job_skills
+        identifier: "{{ 'raw_job_skills' if target.name == 'dev' else 'job_skills' }}"
         description: (job, skill) pair extracted from the postings.

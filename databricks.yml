@@ -1,0 +1,39 @@
+bundle:
+  name: dbt-job-postings
+
+variables:
+  catalog:
+    description: Unity catalog name for dbt
+    default: dbt_job_posting_dev
+  warehouse_id:
+    description: SQL warehouse ID for the dbt task (overridden per target)
+    default: "84bc1365ee835160"
+  notebook_path:
+    description: Path to ingestion script
+    default: ../src/load_raw_dev.ipynb
+
+include:
+  - resources/*
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      profile: ChanuThaDatabricksConn
+      host: dbc-24c12dfc-d37a.cloud.databricks.com
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      catalog: dbt_job_posting_dev
+      notebook_path: ../src/load_raw_dev.ipynb
+
+  prod:
+    mode: production
+    default: false
+    workspace:
+      profile: ChanuThaDatabricksConn
+      host: dbc-24c12dfc-d37a.cloud.databricks.com
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      catalog: dbt_job_posting_prod
+      notebook_path: ../src/load_raw_to_table_prod.ipynb

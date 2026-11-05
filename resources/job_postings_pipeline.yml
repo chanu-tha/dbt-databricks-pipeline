@@ -1,0 +1,30 @@
+resources:
+  jobs:
+    job_posting_pipeline:
+      name: job_posting_pipeline
+      tasks:
+        - task_key: load_raw_to_delta_table
+          notebook_task:
+            notebook_path: ../src/load_raw_dev.ipynb
+            source: WORKSPACE
+        
+        - task_key: monthly_dbt_run
+          depends_on:
+            - task_key: load_raw_to_delta_table
+          dbt_task:
+            project_directory: ../dbt-jobs-posting
+            commands:
+              - dbt deps
+              - dbt debug
+              - dbt build --target ${bundle.target}
+            source: WORKSPACE
+          environment_key: dbt-default
+      queue:
+        enabled: true
+      environments:
+        - environment_key: dbt-default
+          spec:
+            dependencies:
+              - dbt-databricks>=1.0.0,<2.0.0
+            environment_version: "6"
+      performance_target: PERFORMANCE_OPTIMIZED
