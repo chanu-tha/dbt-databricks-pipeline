@@ -17,6 +17,7 @@ resources:
               - dbt deps
               - dbt debug
               - dbt build --target ${bundle.target}
+            warehouse_id: ${var.warehouse_id}
             source: WORKSPACE
           environment_key: dbt-default
       queue:

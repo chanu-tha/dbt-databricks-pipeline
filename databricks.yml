@@ -2,6 +2,8 @@ bundle:
   name: dbt-job-postings
 
 variables:
+  root_path:
+    default: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
   catalog:
     description: Unity catalog name for dbt
     default: dbt_job_posting_dev
@@ -22,7 +24,8 @@ targets:
     workspace:
       profile: ChanuThaDatabricksConn
       host: dbc-24c12dfc-d37a.cloud.databricks.com
-      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+      root_path: ${var.root_path}
+    # specify variable to use in dev env
     variables:
       catalog: dbt_job_posting_dev
       notebook_path: ../src/load_raw_dev.ipynb
@@ -33,7 +36,8 @@ targets:
     workspace:
       profile: ChanuThaDatabricksConn
       host: dbc-24c12dfc-d37a.cloud.databricks.com
-      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+      root_path: ${var.root_path}
+    # specify variable to use in prod env
     variables:
       catalog: dbt_job_posting_prod
       notebook_path: ../src/load_raw_to_table_prod.ipynb
