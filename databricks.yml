@@ -21,7 +21,6 @@ targets:
     mode: development
     default: true
     workspace:
-      profile: ChanuThaDatabricksConn
       host: dbc-24c12dfc-d37a.cloud.databricks.com
       root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
 
@@ -34,7 +33,6 @@ targets:
     mode: production
     default: false
     workspace:
-      profile: ChanuThaDatabricksConn
       host: dbc-24c12dfc-d37a.cloud.databricks.com
       root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
 
