@@ -5,7 +5,7 @@ resources:
       tasks:
         - task_key: load_raw_to_delta_table
           notebook_task:
-            notebook_path: ../src/load_raw_dev.ipynb
+            notebook_path: ${var.notebook_path}
             source: WORKSPACE
         
         - task_key: monthly_dbt_run
@@ -13,11 +13,14 @@ resources:
             - task_key: load_raw_to_delta_table
           dbt_task:
             project_directory: ../dbt-jobs-posting
+            
             commands:
               - dbt deps
               - dbt debug
-              - dbt build --target ${bundle.target}
+              - dbt build
             warehouse_id: ${var.warehouse_id}
+            catalog: ${var.catalog}
+            schema: default
             source: WORKSPACE
           environment_key: dbt-default
       queue:

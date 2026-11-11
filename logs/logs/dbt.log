@@ -1,0 +1,61 @@
+[0m07:45:19.176464 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffbddb9fe6f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffbddbb10dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffbddbb13710>]}
+
+
+============================== 07:45:19.181975 | 02564ca5-304e-4a7a-b738-09e77dbaca03 ==============================
+[0m07:45:19.181975 [info ] [MainThread]: Running with dbt=1.12.6
+[0m07:45:19.183025 [debug] [MainThread]: running dbt with arguments {'warn_error': 'None', 'log_cache_events': 'False', 'maximum_seed_size_mib': '1', 'debug': 'False', 'use_colors': 'True', 'printer_width': '80', 'fail_fast': 'False', 'target_path': 'None', 'profiles_dir': '/tmp/tmp-dbt-run-222508778095304-profiles', 'log_path': '/tmp/tmp-dbt-run-222508778095304/logs', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'no_print': 'None', 'log_format': 'default', 'empty': 'None', 'static_parser': 'True', 'quiet': 'False', 'introspect': 'True', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'partial_parse': 'True', 'write_json': 'True', 'use_experimental_parser': 'False', 'hints_enabled': 'True', 'invocation_command': 'dbt deps'}
+[0m07:45:19.470508 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '02564ca5-304e-4a7a-b738-09e77dbaca03', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffbddaa0ad80>]}
+[0m07:45:19.515271 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-lmcxpu3i'
+[0m07:45:19.516089 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m07:45:19.599960 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m07:45:19.602098 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m07:45:19.640498 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m07:45:19.654674 [info ] [MainThread]: Updating lock file in file path: /tmp/tmp-dbt-run-222508778095304/package-lock.yml
+[0m07:45:19.657109 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-bonq9jgi'
+[0m07:45:19.660784 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m07:45:19.816856 [info ] [MainThread]: Installed from version 1.1.1
+[0m07:45:19.817556 [info ] [MainThread]: Updated version available: 1.4.1
+[0m07:45:19.818117 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '02564ca5-304e-4a7a-b738-09e77dbaca03', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffbddb2d7950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffbddab08560>]}
+[0m07:45:19.818772 [info ] [MainThread]: 
+[0m07:45:19.819369 [info ] [MainThread]: Updates available for packages: ['dbt-labs/dbt_utils']                 
+Update your versions in packages.yml, then run dbt deps
+[0m07:45:19.820881 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 0.72623104, "process_in_blocks": "22528", "process_kernel_time": 0.314987, "process_mem_max_rss": "146880", "process_out_blocks": "30792", "process_user_time": 4.232648}
+[0m07:45:19.821530 [debug] [MainThread]: Command `dbt deps` succeeded at 07:45:19.821429 after 0.73 seconds
+[0m07:45:19.822108 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffbdda887380>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffbddab08110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffbddab08560>]}
+[0m07:45:19.822640 [debug] [MainThread]: Flushing usage events
+[0m07:45:19.903464 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:45:23.240766 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff1e31881460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff1e30477020>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff1e30756600>]}
+
+
+============================== 07:45:23.244022 | d07d1cce-242c-4134-8003-1b12979c6eaf ==============================
+[0m07:45:23.244022 [info ] [MainThread]: Running with dbt=1.12.6
+[0m07:45:23.244726 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'maximum_seed_size_mib': '1', 'profiles_dir': '/tmp/tmp-dbt-run-222508778095304-profiles', 'write_json': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'log_format': 'default', 'log_path': '/tmp/tmp-dbt-run-222508778095304/logs', 'send_anonymous_usage_stats': 'True', 'empty': 'None', 'log_cache_events': 'False', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'debug': 'False', 'no_print': 'None', 'use_colors': 'True', 'quiet': 'False', 'invocation_command': 'dbt debug --target dev', 'use_experimental_parser': 'False', 'warn_error': 'None', 'static_parser': 'True', 'version_check': 'True', 'hints_enabled': 'True', 'printer_width': '80', 'target_path': 'None'}
+[0m07:45:23.258093 [info ] [MainThread]: dbt version: 1.12.6
+[0m07:45:23.258685 [info ] [MainThread]: python version: 3.12.3
+[0m07:45:23.259155 [info ] [MainThread]: python path: /local_disk0/.ephemeral_nfs/envs/pythonEnv-53924688-b0fc-4027-9cb9-cc9abd689b81/bin/python
+[0m07:45:23.259588 [info ] [MainThread]: os info: Linux-6.1.189-236.400.amzn2023.aarch64-aarch64-with-glibc2.39
+[0m07:45:23.262537 [info ] [MainThread]: Using profiles dir at /tmp/tmp-dbt-run-222508778095304-profiles
+[0m07:45:23.263084 [info ] [MainThread]: Using profiles.yml file at /tmp/tmp-dbt-run-222508778095304-profiles/profiles.yml
+[0m07:45:23.263544 [info ] [MainThread]: Using dbt_project.yml file at /tmp/tmp-dbt-run-222508778095304/dbt_project.yml
+[0m07:45:23.375822 [info ] [MainThread]: Configuration:
+[0m07:45:23.376512 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m07:45:23.377002 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m07:45:23.377446 [info ] [MainThread]: Required dependencies:
+[0m07:45:23.377901 [debug] [MainThread]: Executing "git --help"
+[0m07:45:23.423466 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   history    EXPERIMENTAL: Rewrite history\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m07:45:23.424230 [debug] [MainThread]: STDERR: "b''"
+[0m07:45:23.424747 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m07:45:23.425249 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m07:45:23.425722 [info ] [MainThread]: [31m1 check failed:[0m
+[0m07:45:23.426194 [info ] [MainThread]: Profile loading failed for the following reason:
+Runtime Error
+  The profile 'dbt_jobs_posting' does not have a target named 'dev'. The valid target names for this profile are:
+   - databricks_cluster
+
+
+[0m07:45:23.428371 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.2662556, "process_in_blocks": "0", "process_kernel_time": 0.17892, "process_mem_max_rss": "124816", "process_out_blocks": "64", "process_user_time": 2.618404}
+[0m07:45:23.429450 [debug] [MainThread]: Command `dbt debug` failed at 07:45:23.429254 after 0.27 seconds
+[0m07:45:23.430012 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff1e2ecced20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff1e2ecce390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff1e34554710>]}
+[0m07:45:23.430580 [debug] [MainThread]: Flushing usage events
+[0m07:45:23.517436 [debug] [MainThread]: An error was encountered while trying to flush usage events
