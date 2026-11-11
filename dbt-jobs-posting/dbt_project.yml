@@ -1,4 +1,4 @@
-name: dbt-jobs-posting
+name: dbt_jobs_posting
 
 profile: dbt_jobs_posting
 
@@ -7,7 +7,7 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  dbt-jobs-posting:
+  dbt_jobs_posting:
     +persist_docs:
       relation: true
       columns: true  
@@ -22,5 +22,5 @@ models:
       +schema: marts
 
 seeds:
-  dbt-jobs-posting:
+  dbt_jobs_posting:
     +schema: seeds
