@@ -8,6 +8,7 @@ wheels/
 .vscode
 
 # Virtual environments
+.databricks
 .venv
 
 .agyignore
