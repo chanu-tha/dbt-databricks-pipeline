@@ -32,7 +32,7 @@ SELECT
 FROM job_postings
 
 {% if is_incremental() %}
-WHERE search_date > (SELECT MAX(search_date) FROM {{ this }})
+    WHERE search_date > (SELECT MAX(search_date) FROM {{ this }})
 {% endif %}
 
 QUALIFY ROW_NUMBER() OVER (PARTITION BY job_id ORDER BY search_date DESC) = 1

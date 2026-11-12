@@ -1,7 +1,13 @@
 resources:
   jobs:
     job_posting_pipeline:
+
       name: job_posting_pipeline
+      
+      parameters:
+        - name: catalog
+          default: ${var.catalog}
+
       tasks:
         - task_key: load_raw_to_delta_table
           notebook_task:
@@ -17,6 +23,8 @@ resources:
             commands:
               - dbt deps
               - dbt debug
+              - dbt run --select stg_job_postings
+              - dbt run-operation backfill_if_needed
               - dbt build
             warehouse_id: ${var.warehouse_id}
             catalog: ${var.catalog}
