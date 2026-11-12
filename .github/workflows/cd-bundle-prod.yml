@@ -1,0 +1,56 @@
+name: CD - Deploy Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: cd-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # ======================
+  # Automatically deploy to dev
+  # ======================
+  deploy-dev:
+    name: Deploy to dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: check repository
+        uses: actions/checkout@v4
+
+      - name: install databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: deploy bundle (dev)
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          databricks bundle deploy --target dev --auto-approve
+
+  # ============================
+  # Deploy to Prod with Gated environment approval
+  # ============================
+  deploy-prod:
+    name: deploy to prod
+    needs: deploy-dev             # run if deploy-dev run successfully
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      - name: install databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: deploy bundle (prod)
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          databricks bundle deploy --target prod --auto-approve
+
+      
